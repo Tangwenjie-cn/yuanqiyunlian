@@ -1,0 +1,18 @@
+[server]
+host = "0.0.0.0" # 监听服务器地址
+port = 8888 # 监听服务器端口
+mode = "debug" # debug, release, test
+# proxy = ["192.168.3.0/0",...] # 设置可信任的代理地址，需重启服务
+
+[database]
+host = "localhost" # 数据库地址
+port = 3306 # 数据库端口
+user = "root" # 数据库用户名
+password = "root" # 数据库密码
+name = "open_yqyl" # 数据库名称
+
+[redis]
+host = "127.0.0.1" # redis地址
+port = 6379 # redis端口
+password = "" # redis密码
+db = 0 # redis数据库

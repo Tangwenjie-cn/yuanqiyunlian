@@ -1,3 +1,4 @@
+
 <template>
     <el-space direction="vertical" fill wrap style="width: 100%;" v-if="info">
         <el-descriptions title="基本信息">

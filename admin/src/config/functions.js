@@ -1,3 +1,12 @@
+/*
+ * 源启云联
+ *
+ * @author    twj
+ * @email     120722324@qq.com
+ * @company   成都源启科技有限公司
+ * @copyright © 2026 成都源启科技有限公司
+ * @license   Apache-2.0
+ */
 // 导出一个函数，用于生成指定长度的随机字符串
 export function randomStr(e){
 	// 如果没有传入参数，则默认生成32位随机字符串

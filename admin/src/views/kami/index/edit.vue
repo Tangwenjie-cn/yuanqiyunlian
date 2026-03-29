@@ -1,3 +1,4 @@
+
 <template>
 	<el-form :model="formModel" label-width="80px" ref="refForm">
         <el-form-item label="价格" prop="price" required>

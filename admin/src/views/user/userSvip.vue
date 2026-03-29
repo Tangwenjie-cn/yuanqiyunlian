@@ -1,3 +1,4 @@
+
 <template>
     <el-space direction="vertical" fill wrap style="width: 100%;" v-if="info">
         <el-card header="会员信息">

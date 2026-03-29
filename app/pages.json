@@ -1,0 +1,195 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index"
+			
+		},
+		{
+			"path" : "pages/sort/index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "分类"
+			}
+		},
+		{
+			"path" : "pages/vip/index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "会员"
+			}
+		},
+		{
+			"path" : "pages/user/index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "个人中心"
+			}
+		},
+		{
+			"path" : "pages/article/index",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/goods/info",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/login/index",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/order/buy",
+			"style" : 
+			{
+				"navigationBarTitleText" : "购买"
+			}
+		},
+		{
+			"path" : "pages/order/list",
+			"style" : 
+			{
+				"navigationBarTitleText" : "我的订单"
+			}
+		},
+		{
+			"path" : "pages/order/info",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/order/buy-vip",
+			"style" : 
+			{
+				"navigationBarTitleText" : "购买会员"
+			}
+		},
+		{
+			"path" : "pages/goods/index",
+			"style" : 
+			{
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path" : "pages/user/set",
+			"style" : 
+			{
+				"navigationBarTitleText" : "设置"
+			}
+		},
+		{
+			"path": "pages/user/goods",
+			"style": {
+				"navigationBarTitleText": "已获取"
+			}
+		},
+		{
+			"path": "pages/user/wallet",
+			"style": {
+				"navigationBarTitleText": "钱包"
+			}
+		},
+		{
+			"path": "pages/user/bill",
+			"style": {
+				"navigationBarTitleText": "余额记录"
+			}
+		},
+		{
+			"path": "pages/cash/index",
+			"style": {
+				"navigationBarTitleText": "提现"
+			}
+		},
+		{
+			"path": "pages/user/promotion",
+			"style": {
+				"navigationBarTitleText": "我的推广"
+			}
+		},
+		{
+			"path": "pages/user/myPromotion",
+			"style": {
+				"navigationBarTitleText": "推广列表"
+			}
+		},
+		{
+			"path": "pages/user/subSuper",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/cash/list",
+			"style": {
+				"navigationBarTitleText": "提现记录"
+			}
+		},
+		{
+			"path": "pages/task/goodsTask",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/article/list",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/user/collect",
+			"style": {
+				"navigationBarTitleText": "我的收藏"
+			}
+		},
+		{
+			"path": "pages/points/sign",
+			"style": {
+				"navigationBarTitleText": "签到"
+			}
+		},
+		{
+			"path": "pages/points/log",
+			"style": {
+				"navigationBarTitleText": "记录"
+			}
+		},
+		{
+			"path": "pages/points/mall",
+			"style": {
+				"navigationBarTitleText": "积分商城"
+			}
+		},
+		{
+			"path": "pages/points/vipList",
+			"style": {
+				"navigationBarTitleText": "会员兑换列表"
+			}
+		},
+		{
+			"path": "pages/points/goodsList",
+			"style": {
+				"navigationBarTitleText": "兑换商品列表"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+}

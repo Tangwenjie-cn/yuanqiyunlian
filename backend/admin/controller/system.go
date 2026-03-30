@@ -58,16 +58,6 @@ func SetGroupList(c *gin.Context) {
 	list := []map[string]any{}
 	for _, v := range groups {
 		value := strings.Split(strings.TrimSpace(v), "=")
-		// if config.Vname == "yq-free" {
-		// 	if value[1] == "6" || value[1] == "7" || value[1] == "11" {
-		// 		continue
-		// 	}
-		// }
-		// if config.Vname == "yq-base" {
-		// 	if value[1] == "7" {
-		// 		continue
-		// 	}
-		// }
 		list = append(list, map[string]any{
 			"name":  value[0],
 			"value": value[1],

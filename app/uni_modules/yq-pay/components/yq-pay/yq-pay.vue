@@ -23,7 +23,7 @@
 				<radio value="3" />
 				<view><span class="iconfont icon-qiamizhifu"></span>卡密</view>
 			</label>
-			<label class="row-center label-line" v-if="config.v_name!='yq-free'">
+			<label class="row-center label-line">
 				<radio value="4" />
 				<view><span class="iconfont icon-kuaijiezhifu"></span>余额  ￥{{store().user.balance}}</view>
 			</label>

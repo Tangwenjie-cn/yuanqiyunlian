@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<div class="flex-column-center block">
-			<template v-if="config.super_on==1&&config.v_name!='yq-free'">
+			<template v-if="config.super_on==1">
 				<span v-if="store().user.is_super==1" class="super">
 					<span class="iconfont icon-xunzhang"></span>{{config.super_name}}</span>
 				<span v-else class="sub-super" @click="uni.navigateTo({

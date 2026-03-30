@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<div class="row-center tab-block" v-if="config.v_name!='yq_free'">
+		<div class="row-center tab-block">
 			<div class="tab-item center" 
 			@click="tabClick(1)"
 			:class="{'tab-item-active':searchData.type==1}">普通订单</div>

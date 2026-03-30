@@ -18,7 +18,7 @@
 			</div>
 		</div>
 	</view>
-	<div class="vip-block" v-if="config.v_name!='yq-free'" 
+	<div class="vip-block"
 	:style="{background:`linear-gradient(to right,${model.gradientStartColor}, ${model.gradientEndColor})`}">
 		<div class="vip-info center" v-if="userVip">
 			<span class="iconfont icon-f-vip" :style="{color:model.iconColor}"></span>
@@ -54,16 +54,16 @@
 			url: '/pages/login/index?back='+'/pages/user/index'
 		})
 	}
-	if(config.v_name!='yq-free'){
-		request("UserVipList").then(res=>{
-			userVipList.value = res.data
-			if(res.data){
-				if(new Date(res.data[0].expire_time).getTime() > new Date().getTime()){
-					userVip.value=true
-				}
-			}		
-		})
-	}
+
+	request("UserVipList").then(res=>{
+		userVipList.value = res.data
+		if(res.data){
+			if(new Date(res.data[0].expire_time).getTime() > new Date().getTime()){
+				userVip.value=true
+			}
+		}		
+	})
+	
 	function cpoy(text){
 		uni.setClipboardData({
 			data:text,

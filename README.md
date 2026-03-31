@@ -47,3 +47,7 @@ plain text
 🤝 贡献说明  
 
 欢迎提交Issue反馈问题、提交PR优化代码，共同完善项目！
+
+📞 联系我们  
+
+[![微信](https://yuanqiyunlian-1301025589.cos.ap-chengdu.myqcloud.com/public/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1.jpg)]

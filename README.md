@@ -50,4 +50,4 @@ plain text
 
 📞 联系我们  
 
-[![微信](https://yuanqiyunlian-1301025589.cos.ap-chengdu.myqcloud.com/public/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1.jpg)]
+<img src="https://yuanqiyunlian-1301025589.cos.ap-chengdu.myqcloud.com/public/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1.png" width="300">

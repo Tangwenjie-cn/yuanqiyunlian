@@ -1,11 +1,11 @@
-<script setup lang="ts">
+<script setup>
 	import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
 	import { request } from '@/config/api.js'
 	import store from '@/stores/index.js'
 	onLaunch(()=>{
 		console.log('App Launch')
 		request('Theme').then(res=>{
-			store().theme=res.data
+			uni.setStorageSync('theme',res.data)
 		})
 		request('Config').then(res=>{
 			store().config=res.data

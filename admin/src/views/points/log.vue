@@ -39,7 +39,7 @@
 			<el-table-column align="center" prop="nickname" label="昵称" width="120" />	
 			<el-table-column align="center" prop="before" label="变动前" width="120" />
 			<el-table-column align="center" prop="after" label="变动后" width="120" />
-			<el-table-column align="center" label="金额" width="120" >
+			<el-table-column align="center" label="积分" width="120" >
                 <template #default="scope">
                     <el-text v-if="scope.row.mode==1" type="primary">+{{scope.row.points}}</el-text>
 					<el-text v-else type="danger">-{{scope.row.points}}</el-text>

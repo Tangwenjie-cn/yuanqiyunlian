@@ -10,6 +10,9 @@
 	const links=defineModel()
 	let filePath=''
 	function downloadFile(){
+		// #ifdef H5
+		return window.open(links.value)
+		// #endif
 		if(filePath){
 			uni.openDocument({
 				filePath: filePath,
@@ -21,6 +24,7 @@
 					btnText.value = '打开失败'
 				}
 			})
+			return
 		}
 		var downloadTask = uni.downloadFile({
 			url:links.value,

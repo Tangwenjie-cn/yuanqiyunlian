@@ -70,39 +70,24 @@
 			</div>
 		</div>
 		
-		<yq-tab-bar></yq-tab-bar>
+		<yq-tab-bar ref="tabBar"></yq-tab-bar>
 	</view>
 </template>
 
 <script setup>
-	import {ref,watch} from 'vue'
+	import {ref,nextTick} from 'vue'
 	import { onShow } from '@dcloudio/uni-app'
 	import store from '@/stores/index.js'
 	import { request } from '/config/api.js'
 	const theme = ref({})
-	if(Object.keys(store().theme).length>0){
-		theme.value=store().theme.sort[0]
-	}
-	watch(store(),(newVal)=>{
-		theme.value=newVal.theme.sort[0]
-		let tabBar=newVal.theme.tabBar[0]
-		for(let i=0;i<tabBar.list.length;i++){			
-			if(tabBar.list[i].link==='/pages/sort/index'){
-				store().tabBarSelectedIndex=i
-				break
-			}
-		}
-	})
+	const tabBar = ref(null)
 	onShow(()=>{
-		if(Object.keys(store().theme).length>0){
-			let tabBar=store().theme.tabBar[0]
-			for(let i=0;i<tabBar.list.length;i++){			
-				if(tabBar.list[i].link==='/pages/sort/index'){
-					store().tabBarSelectedIndex=i
-					break
-				}
+		theme.value=uni.getStorageSync('theme').sort[0]
+		nextTick(()=>{
+			if (tabBar.value){
+				tabBar.value.autoMatchActiveTab()
 			}
-		}
+		})
 		request('GoodsSort').then(res=>{
 			list.value=res.data
 			if(Object.hasOwn(res.data[0],'children')){

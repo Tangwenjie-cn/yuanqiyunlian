@@ -20,14 +20,16 @@
 				<div>登录方式</div>
 				<div class="underline"></div>
 			</div>
+			<!-- #ifdef MP-WEIXIN -->
 			<span class="iconfont icon-weixin" @click="wxLogin"></span>
+			<!-- #endif -->			
 		</div>	
 	</view>
 </template>
 
 <script setup>
 	import { ref } from 'vue'
-	import {onLoad} from '@dcloudio/uni-app'
+	import {onLoad,onBackPress} from '@dcloudio/uni-app'
 	import { request } from '/config/api.js'
 	import store from '@/stores/index.js'
 	import {objToQuery,generateRandomString} from '@/config/function.js'
@@ -39,6 +41,11 @@
 		if(query.back!==undefined){
 			store().loginBack=query.back
 		}
+	})
+	onBackPress(()=>{
+		uni.reLaunch({
+			url:'/pages/index/index'
+		})
 	})
 	function wxLogin(){
 		uni.login({

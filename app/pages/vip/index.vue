@@ -38,20 +38,18 @@
 			</div>
 			
 		</uni-card>
-		<yq-tab-bar></yq-tab-bar>
+		<yq-tab-bar ref="tabBar"></yq-tab-bar>
 	</view>
 </template>
 
 <script setup>
-	import {ref,watch} from 'vue'	
+	import {ref,watch,nextTick} from 'vue'	
 	import { onShow } from '@dcloudio/uni-app'
 	import store from '@/stores/index.js'
 	import { request } from '/config/api.js'
 	import { formatIsoTime } from '/config/function.js'
 	const theme = ref({})
-	if(Object.keys(store().theme).length>0){
-		theme.value=store().theme.vip[0]
-	}
+	const tabBar = ref(null)
 	const user=store().user
 	const config=store().config
 	const checkVip = ref({})
@@ -61,29 +59,15 @@
 	function vipClick(i){
 		checkVip.value = i
 	}
-	watch(store(),(newVal)=>{
-		theme.value=newVal.theme.vip[0]
-		let tabBar=newVal.theme.tabBar[0]
-		for(let i=0;i<tabBar.list.length;i++){			
-			if(tabBar.list[i].link==='/pages/vip/index'){
-				store().tabBarSelectedIndex=i
-				break
-			}
-		}
-		setStatus()
-	})
+
 	onShow(()=>{
-		if(Object.keys(store().theme).length>0){
-			let tabBar=store().theme.tabBar[0]
-			for(let i=0;i<tabBar.list.length;i++){			
-				if(tabBar.list[i].link==='/pages/vip/index'){
-					store().tabBarSelectedIndex=i
-					break
-				}
+		theme.value=uni.getStorageSync('theme').vip[0]
+		setStatus()
+		nextTick(()=>{
+			if (tabBar.value){
+				tabBar.value.autoMatchActiveTab()
 			}
-			setStatus()
-		}
-		
+		})
 		request("VipList",{},'post').then(res=>{
 			vipList.value = res.data
 		})

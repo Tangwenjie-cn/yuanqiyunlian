@@ -17,12 +17,12 @@
 				<!-- #endif -->
 			</template>			
 		</template>
-		<yq-tab-bar></yq-tab-bar>
+		<yq-tab-bar ref="tabBar"></yq-tab-bar>
 	</div>	
 </template>
 
 <script setup>
-	import { ref,watch } from 'vue'
+	import { nextTick, ref } from 'vue'
 	import { onShow,onLoad,onShareAppMessage,onShareTimeline } from '@dcloudio/uni-app'
 	import store from '@/stores/index.js'
 	import yqSearchSwiper from '/pages/index/components/search-swiper.vue'
@@ -35,19 +35,7 @@
 	import yqVideo from '/pages/index/components/video.vue'
 	import yqGoods from '/pages/index/components/goods.vue'	
 	const theme = ref([])
-	if(Object.keys(store().theme).length>0){
-		theme.value=store().theme.index
-	}
-	watch(store(),(newVal)=>{
-		theme.value=newVal.theme.index
-		let tabBar=newVal.theme.tabBar[0]
-		for(let i=0;i<tabBar.list.length;i++){			
-			if(tabBar.list[i].link==='/pages/index/index'){
-				store().tabBarSelectedIndex=i
-				break
-			}
-		}
-	})
+	const tabBar = ref(null)
 	onShareAppMessage((res)=>{
 		if(res.from=='menu'){
 			return {
@@ -75,15 +63,12 @@
 		}
 	})
 	onShow(()=>{
-		if(Object.keys(store().theme).length>0){
-			let tabBar=store().theme.tabBar[0]
-			for(let i=0;i<tabBar.list.length;i++){			
-				if(tabBar.list[i].link==='/pages/index/index'){
-					store().tabBarSelectedIndex=i
-					break
-				}
+		theme.value=uni.getStorageSync('theme').index
+		nextTick(()=>{
+			if (tabBar.value){
+				tabBar.value.autoMatchActiveTab()
 			}
-		}
+		})		
 	})
 	function setStatus(data){
 		uni.setNavigationBarColor({

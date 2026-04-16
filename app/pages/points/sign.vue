@@ -58,15 +58,12 @@
 	const signCount=ref([])
 	const themeFrontColor=ref('#fff')
 	const themeBackgroundColor=ref('#f56b59')
+	const theme=ref({})
 	onShow(()=>{
 		getSignConfig()
-		for(let i=0,len=store().theme.my.length;i<len;i++){
-			if(store().theme.my[i].type==='status'){
-				themeFrontColor.value=store().theme.my[i].data.color
-				themeBackgroundColor.value=store().theme.my[i].data.backgroundColor
-				continue
-			}
-		}		
+		theme.value=uni.getStorageSync('theme').vip[0]
+		themeFrontColor.value=theme.value.titleColor
+		themeBackgroundColor.value=theme.value.backgroundColor		
 		setStatus()
 	})
 	function getSignConfig(){

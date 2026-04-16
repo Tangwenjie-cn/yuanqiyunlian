@@ -1,29 +1,61 @@
 <template>
-	<div class="content" :style="{backgroundColor:store().theme.tabBar[0].backgroundColor}">
-		<div class="tab-bar-item" v-for="(item,index) in store().theme.tabBar[0].list" @click="tabBarClick(index)">
-			<image class="tab-bar-img" :src="store().tabBarSelectedIndex==index ? item.selectImgUrl :item.imgUrl"></image>
+	<div class="content" :style="{backgroundColor:tabBar.backgroundColor}">
+		<div class="tab-bar-item" v-for="(item,index) in tabBar.list" @click="tabBarClick(index)">
+			<image class="tab-bar-img" :src="tabbarSelectedIndex==index ? item.selectImgUrl :item.imgUrl"></image>
 			<span class="tab-bar-text" :style="setText(index)">{{item.name}}</span>
 		</div>
 	</div>
 </template>
 
 <script setup>
-	import { ref,watch } from 'vue'
+	import { ref } from 'vue'
+	import {onShow} from '@dcloudio/uni-app'
 	import store from '@/stores/index.js'
-
-	const tabBarClick = (index) => {
-		store().tabBarSelectedIndex = index
+	const tabbarSelectedIndex = ref(0)
+	const tabBar= ref([])
+	onShow(()=>{
+		tabBar.value = uni.getStorageSync("theme").tabBar[0]
+		tabbarSelectedIndex.value = uni.getStorageSync('tabBarSelectedIndex') || 0
+	})
+	const tabBarClick = (index) => {		
+		if(tabbarSelectedIndex.value == index) {
+			return
+		}
+		tabbarSelectedIndex.value = index
+		uni.setStorageSync('tabBarSelectedIndex',index)
 		uni.reLaunch({
-			url: store().theme.tabBar[0].list[index].link
+			url: tabBar.value.list[index].link
 		});
 	}
 	const setText = (index) => {
-		if(store().tabBarSelectedIndex == index) {
-			return `color: ${store().theme.tabBar[0].selectColor};`
+		if(tabbarSelectedIndex.value == index) {
+			return `color: ${tabBar.value.selectColor};`
 		}else {
-			return `color: ${store().theme.tabBar[0].color};`
+			return `color: ${tabBar.value.color};`
 		}
 	}
+	// 自动根据当前页面路径，匹配选中tab
+	function  autoMatchActiveTab() {
+	    // 获取当前页面路径
+	    const pages = getCurrentPages()
+	    if (!pages.length) return
+	    
+	    const currentPage = pages[pages.length - 1]
+	    const currentPath = '/' + currentPage.route
+	    // 找到对应 tab 的 index
+	    const activeIndex = tabBar.value.list.findIndex(item => {
+	      return item.link === currentPath
+	    })
+	
+	    if (activeIndex !== -1) {
+	      // 更新选中状态
+	      tabbarSelectedIndex.value = activeIndex
+	      uni.setStorageSync('tabBarSelectedIndex',activeIndex)
+	    }
+	}
+	defineExpose({
+		autoMatchActiveTab
+	})
 </script>
 
 <style scoped>

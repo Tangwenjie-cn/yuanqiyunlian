@@ -11,10 +11,13 @@
 			</uni-collapse-item>
 		</uni-collapse>
 		<radio-group @change="radioChange">
+			<!-- #ifdef MP-WEIXIN -->
 			<label class="row-center label-line" v-if="config.wxpay_on==1">
 				<radio value="1" checked />
 				<view><span class="iconfont icon-weixinzhifu"></span>微信</view>
 			</label>
+			<!-- #endif -->
+						
 			<label class="row-center label-line" v-if="checkAlipay()">
 				<radio value="2" />
 				<view><span class="iconfont icon-zhifubao"></span>支付宝</view>

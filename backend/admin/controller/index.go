@@ -15,6 +15,7 @@ import (
 	"gin/config"
 	"gin/model"
 	"gin/service/set"
+	"gin/service/update"
 	"gin/util"
 	"time"
 
@@ -113,10 +114,21 @@ func Home(c *gin.Context) {
 	var cash, applySuper int64
 	config.DB.Model(&model.Cash{}).Where("status = 0").Count(&cash)
 	config.DB.Model(&model.ApplySuper{}).Where("status = 0").Count(&applySuper)
-
+	isUpdate, updateInfo := update.CheckUpdate()
 	data["pending"] = map[string]any{
 		"cash":  cash,
 		"super": applySuper,
+	}
+	if isUpdate {
+		pendingMap := data["pending"].(map[string]any)
+		pendingMap["update"] = map[string]any{
+			"isUpdate":   isUpdate,
+			"prerelease": updateInfo["prerelease"],
+			"tag_name":   updateInfo["tag_name"],
+			"body":       updateInfo["body"],
+			"version":    config.Vstring,
+		}
+		data["pending"] = pendingMap
 	}
 	util.Success(c, "ok", data)
 }

@@ -60,11 +60,23 @@
 			<div id="echarts" style="width: 100%;height: 450px;"></div>
 		</el-col>
 		<el-col :span="10">
-			<el-card header="待处理事项">
+			<el-card header="信息提示">
 				<el-alert :title="'有'+pending.cash+'个提现申请待处理'" v-if="pending.cash>0" type="warning" show-icon />
-				<el-alert :title="'有'+pending.super+'个高级推广申请待处理'" v-if="pending.super>0" type="warning" show-icon />
-				<el-alert title="有新版本更新" v-if="pending.version" type="primary" show-icon />	
+				<el-alert :title="'有'+pending.super+'个高级推广申请待处理'" v-if="pending.super>0" type="warning" show-icon />	
 			</el-card>
+			<el-collapse v-if="pending.update" style="margin-top: 10px;">
+				<el-collapse-item title="有新的版本更新">
+					<el-descriptions column="2">
+						<el-descriptions-item label="当前版本">{{ pending.update.version }}</el-descriptions-item>
+						<el-descriptions-item label="最新版本">{{ pending.update.tag_name}}</el-descriptions-item>
+						<el-descriptions-item label="版本">{{ pending.update.prerelease?'预览版':'正式版' }}</el-descriptions-item>
+						<el-descriptions-item label="更新内容">{{ pending.update.body }}</el-descriptions-item>
+						<el-descriptions-item label="下载地址">
+							<a href="https://gitee.com/chengdu-yuanqi/yuanqi-yunlian/releases" target="_blank" rel="noopener noreferrer">点击前往</a>
+						</el-descriptions-item>
+					</el-descriptions>
+				</el-collapse-item>
+			</el-collapse>
 		</el-col>		
 	</el-row>
 	
